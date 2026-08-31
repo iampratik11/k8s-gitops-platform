@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+
+metadata:
+  name: {{ include "payment-service.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list"]
+
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["get"]
