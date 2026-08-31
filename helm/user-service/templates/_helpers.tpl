@@ -7,17 +7,15 @@ Return the chart name.
 
 
 {{/*
-Create a fully qualified app name.
+Create a stable application name.
+
+This intentionally does not use .Release.Name so that
+ArgoCD/Helm release names do not change Kubernetes resource names.
 */}}
 {{- define "user-service.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.nameOverride }}
-{{- if contains $name .Release.Name }}
-{{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 {{- end }}
