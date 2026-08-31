@@ -2,35 +2,36 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: user-service
+  name: payment-service
   namespace: staging
 
   labels:
-    app: user-service
+    app: payment-service
 
 spec:
   replicas: 2
 
   strategy:
     type: RollingUpdate
+
     rollingUpdate:
       maxUnavailable: 0
       maxSurge: 1
 
   selector:
     matchLabels:
-      app: user-service
+      app: payment-service
 
   template:
     metadata:
       labels:
-        app: user-service
+        app: payment-service
 
     spec:
       containers:
-        - name: user-service
+        - name: payment-service
 
-          image: user-service:1.0.0
+          image: payment-service:1.0.0
 
           imagePullPolicy: IfNotPresent
 
@@ -42,9 +43,13 @@ spec:
             - configMapRef:
                 name: microservices-config
 
+            - secretRef:
+                name: payment-secrets
+
           env:
             - name: VERSION
               value: "1.0.0"
+
 
           resources:
             requests:

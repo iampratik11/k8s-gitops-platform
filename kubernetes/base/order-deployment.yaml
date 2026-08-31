@@ -39,12 +39,14 @@ spec:
             - name: http
               containerPort: 8080
 
-          env:
-            - name: PORT
-              value: "8080"
+          envFrom:
+            - configMapRef:
+                name: microservices-config
 
+          env:
             - name: VERSION
               value: "1.0.0"
+
 
           resources:
             requests:
