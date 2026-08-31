@@ -1,0 +1,48 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: microservices-ingress
+  namespace: staging
+
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+
+spec:
+  ingressClassName: nginx
+
+  rules:
+    - host: microservices.local
+
+      http:
+        paths:
+
+          - path: /users(/|$)(.*)
+            pathType: ImplementationSpecific
+
+            backend:
+              service:
+                name: user-service
+
+                port:
+                  number: 80
+
+          - path: /orders(/|$)(.*)
+            pathType: ImplementationSpecific
+
+            backend:
+              service:
+                name: order-service
+
+                port:
+                  number: 80
+
+          - path: /payments(/|$)(.*)
+            pathType: ImplementationSpecific
+
+            backend:
+              service:
+                name: payment-service
+
+                port:
+                  number: 80

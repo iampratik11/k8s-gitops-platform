@@ -28,6 +28,7 @@ spec:
         app: payment-service
 
     spec:
+      serviceAccountName: microservice-sa
       containers:
         - name: payment-service
 
