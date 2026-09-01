@@ -16,14 +16,6 @@ spec:
         grafana:
           enabled: true
 
-          grafana.ini:
-            server:
-              root_url: http://a530133478f634f929d2334b791ac380-113203296.us-east-2.elb.amazonaws.com/
-              serve_from_sub_path: false
-
-            auth.anonymous:
-              enabled: false
-
         prometheus:
           enabled: true
 
