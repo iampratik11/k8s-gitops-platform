@@ -9,7 +9,9 @@ metadata:
     app: {{ include "payment-service.name" . }}
 
 spec:
+  {{- if not .Values.hpa.enabled }}
   replicas: {{ .Values.replicaCount }}
+  {{- end }}
 
   strategy:
     type: RollingUpdate
