@@ -1,4 +1,4 @@
-replicaCount: 3
+replicaCount: 2
 
 image:
   repository: 806997204926.dkr.ecr.us-east-2.amazonaws.com/payment-service
@@ -28,7 +28,7 @@ secret:
 
 hpa:
   enabled: true
-  minReplicas: 3
+  minReplicas: 2
   maxReplicas: 8
   cpu:
     targetUtilization: 50
