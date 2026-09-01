@@ -8,6 +8,7 @@ spec:
 
   sourceRepos:
     - https://github.com/iampratik11/k8s-gitops-platform.git
+    - https://prometheus-community.github.io/helm-charts
 
   destinations:
     - namespace: monitoring
