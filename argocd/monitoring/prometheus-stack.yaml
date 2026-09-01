@@ -16,6 +16,9 @@ spec:
         grafana:
           enabled: true
 
+          service:
+            type: LoadBalancer
+
         prometheus:
           enabled: true
 
