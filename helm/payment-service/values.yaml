@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: payment-service
+  repository: 806997204926.dkr.ecr.us-east-2.amazonaws.com/payment-service
   tag: "1.0.0"
   pullPolicy: IfNotPresent
 

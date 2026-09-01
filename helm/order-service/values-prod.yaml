@@ -1,7 +1,7 @@
 replicaCount: 3
 
 image:
-  repository: order-service
+  repository: 806997204926.dkr.ecr.us-east-2.amazonaws.com/order-service
   tag: "1.0.0"
   pullPolicy: IfNotPresent
 
